@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#531110">
+<title>FUP · Produção Regional</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23a8372c'/%3E%3Cstop offset='1' stop-color='%236c1b0b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M9 22V10h10M9 16h7' stroke='%23f4ba44' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script>try{const t=localStorage.getItem('fup-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script src="data.js" defer></script>
+<script src="validation.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-today" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="12" cy="15" r="1.6" class="fill"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3.5 17.5l5.5-6 4 3.5 7.5-8.5"/><path d="M15 6.5h5.5V12"/></symbol>
+  <symbol id="i-stock" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" class="fill"/></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.7 3.2-6 6.5-6s5.9 2.3 6.5 6"/><path d="M16 4.8a3.3 3.3 0 010 6.4M18 14.4c2 .8 3.2 2.8 3.5 5.6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.6-3.3 8-8 9-4.7-1-8-4.4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M4.5 20h15"/></symbol>
+  <symbol id="i-present" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12.5" rx="2.5"/><path d="M12 16.5V21M8 21h8"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 119.5 4a6.5 6.5 0 0010.5 10.5z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 20V9M7 13.5l5-5 5 5M4.5 4h15"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M6.5 9V3.5h11V9M6.5 17h-2a2 2 0 01-2-2v-4a2 2 0 012-2h15a2 2 0 012 2v4a2 2 0 01-2 2h-2"/><rect x="6.5" y="14" width="11" height="6.5" rx="1"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.2l2.7 2.7L16 9.5"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3.5l9.5 16.5h-19z"/><path d="M12 10v4.5M12 17.2v.3"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v8M8.5 12.5L12 16l3.5-3.5"/></symbol>
+  <symbol id="i-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></symbol>
+</svg>
+
+<aside class="sidebar" aria-label="Navegação">
+  <a class="brand" href="#painel" aria-label="FUP — início">
+    <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 23V9h12M9 16h8"/></svg></span>
+    <span class="brand-text">FUP<small>Produção regional</small></span>
+  </a>
+  <nav>
+    <p class="nav-label">Acompanhamento</p>
+    <button data-view="painel"><svg><use href="#i-today"/></svg><span>Painel do dia</span></button>
+    <button data-view="evolucao"><svg><use href="#i-trend"/></svg><span>Evolução</span></button>
+    <button data-view="estoque"><svg><use href="#i-stock"/></svg><span>Estoque &amp; DU</span></button>
+    <button data-view="metas"><svg><use href="#i-target"/></svg><span>Metas do mês</span></button>
+    <button data-view="capacity"><svg><use href="#i-team"/></svg><span>Capacity</span></button>
+    <p class="nav-label">Governança</p>
+    <button data-view="conferencia"><svg><use href="#i-shield"/></svg><span>Conferência</span><b id="nav-check" class="nav-badge"></b></button>
+  </nav>
+  <div class="side-foot">
+    <button class="theme-toggle" id="theme" type="button" aria-label="Alternar tema claro/escuro"><svg class="sun"><use href="#i-sun"/></svg><svg class="moon"><use href="#i-moon"/></svg><span>Tema</span></button>
+  </div>
+</aside>
+
+<main class="main">
+  <header class="topbar">
+    <div class="title-block">
+      <div class="eyebrow" id="eyebrow">Acompanhamento de produção</div>
+      <h1 id="title">Painel do dia</h1>
+      <p id="subtitle" class="subtitle"></p>
+    </div>
+    <div class="top-actions">
+      <button class="btn ghost" id="present" type="button" title="Modo apresentação (tecla P)"><svg><use href="#i-present"/></svg><span>Apresentar</span></button>
+      <button class="btn ghost" id="print" type="button" title="Imprimir / salvar em PDF"><svg><use href="#i-print"/></svg><span>PDF</span></button>
+      <button class="btn primary" id="export" type="button"><svg><use href="#i-download"/></svg><span>Exportar CSV</span></button>
+    </div>
+  </header>
+
+  <div class="filterbar" role="toolbar" aria-label="Filtros">
+    <div class="field"><span>Período do realizado · D0 = dia seguinte ao “Até”</span><div id="f-period"></div></div>
+    <div class="field"><span>Abrangência</span>
+      <div class="segmented" id="f-reg" role="radiogroup" aria-label="Abrangência">
+        <button data-reg="12" role="radio">Desktop</button><button data-reg="0" role="radio">Central</button><button data-reg="4" role="radio">Centro Oeste</button><button data-reg="8" role="radio">Sudeste</button>
+      </div>
+    </div>
+    <label class="field"><span>Serviço</span><select id="f-type"></select></label>
+    <div class="field context" id="context"></div>
+  </div>
+
+  <section id="view" class="view" aria-live="polite"></section>
+
+  <footer class="foot">
+    <span><b>FUP</b> · Inteligência operacional · dados do banco dw_fup (robô diário 07:13 + tabelas manuais)</span>
+  </footer>
+</main>
+
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Detalhe">
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <header><div><div class="eyebrow" id="drawer-eyebrow"></div><h2 id="drawer-title"></h2></div><button class="icon-btn" id="drawer-close" aria-label="Fechar"><svg><use href="#i-close"/></svg></button></header>
+    <div id="drawer-body"></div>
+  </div>
+</aside>
+<div class="tooltip" id="tooltip" role="tooltip"></div>
+<div class="toast" id="toast" role="status"></div>
+</body>
+</html>

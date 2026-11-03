@@ -1,0 +1,1107 @@
+{
+ "generated": "2026-11-03T14:35:55",
+ "note": "Inconsistências da PRÓPRIA planilha (o portal reproduz os valores). Gerado por _analise_scripts/compromissos_d0/03_registro_inconsistencias.py",
+ "causes": {
+  "PLAN_FDS_CHIP_CENTRAL": "Compromisso de sábado vem do modelo PLAN_FDS do COMPROMISSOS_D0.xlsx, cuja fórmula PLAN_FDS!G19 = SUM(G21:G22) omite Sumaré (G20): Central Chip sai 10 em vez de 15.",
+  "SOMA_DESKTOP_DUPLICADA": "Linha DESKTOP da necessidade com =SUM(linha CENTRAL:linha Jundiaí), que soma regionais E polos (valor em dobro). O TOTAL DESKTOP (= Σ regionais) está correto.",
+  "DESKTOP_SEM_VALOR": "Células DESKTOP de Instalação/Retiradas sem valor numérico na origem; o TOTAL DESKTOP (= Σ TOTAL regionais) as inclui, então Σ serviços da linha não fecha.",
+  "PCT_LE_ABA_MENSAL": "% Compromisso de Retiradas lê o realizado da aba mensal (Ret Jun!AC) e não o realizado do bloco; as duas fontes diferem neste dia.",
+  "NEC_REGIONAL_COLADA": "Necessidade da regional colada como valor (não é fórmula) e diferente da soma dos polos (regional calculada à parte / colagem de outra versão).",
+  "COMPROMISSO_COLADO_INCOERENTE": "Compromisso colado como valor; o valor da regional ou do TOTAL não corresponde à soma das parcelas coladas no mesmo dia (digitação/colagem desatualizada).",
+  "FOTO_D1_X_BASE_ATUAL": "O realizado do bloco diário (Compromissos D0) é a foto do D-1 colada na manhã seguinte; a aba mensal (Ati/Ret <mês>) reflete a base atual do Backlog (doc. 08, X9/X10: 93/93 por regional × dia). OS fechadas depois da foto, com data retroativa, entram só na aba mensal.",
+  "REALIZADO_COLADO_NO_BLOCO_SEGUINTE": "O realizado de um dia foi colado no bloco do dia seguinte: o bloco do dia ficou vazio e o bloco seguinte traz exatamente o valor do dia na aba mensal; o realizado do dia seguinte não foi colado.",
+  "ABA_MENSAL_DIFERE_DA_FOTO": "[HIPÓTESE H8 — confirmar] A aba mensal foi atualizada depois da foto D-1 (OS que entraram ou saíram da view do Backlog). A base atual não guarda mais este mês, então não é possível comprovar."
+ },
+ "items": [
+  {
+   "check": "need",
+   "ref": "2026-02-02 Sudeste Instalação",
+   "cell": "Compromissos D0!IHO43",
+   "formula": "405.4506302521008",
+   "valor": 405.45063,
+   "soma_calculada": 404.966387,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-03-01 Central Instalação",
+   "cell": "Compromissos D0!JCI35",
+   "formula": "89.28489483747609",
+   "valor": 89.284895,
+   "soma_calculada": 89.307839,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-03-01 Centro Oeste Instalação",
+   "cell": "Compromissos D0!JCI39",
+   "formula": "52.58891013384321",
+   "valor": 52.58891,
+   "soma_calculada": 52.573614,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-03-19 Sudeste Instalação",
+   "cell": "Compromissos D0!JRR58",
+   "formula": "0",
+   "valor": 0.0,
+   "soma_calculada": 415.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-03-28 Desktop Instalação",
+   "cell": "Compromissos D0!JZA47",
+   "formula": "=SUM(JZA35:JZA46)",
+   "valor": 3840.0,
+   "soma_calculada": 1919.999999,
+   "cause": "SOMA_DESKTOP_DUPLICADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-03-28 Desktop Retiradas",
+   "cell": "Compromissos D0!JZF47",
+   "formula": "=SUM(JZF35:JZF46)",
+   "valor": 1579.720305,
+   "soma_calculada": 789.860153,
+   "cause": "SOMA_DESKTOP_DUPLICADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-03-28 Desktop TOTAL",
+   "cell": "Compromissos D0!JZG47",
+   "formula": "=JZG43+JZG39+JZG35",
+   "valor": 6268.435053,
+   "soma_calculada": 8978.295205,
+   "cause": "SOMA_DESKTOP_DUPLICADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-03-29 Desktop Instalação",
+   "cell": "Compromissos D0!JZT47",
+   "formula": "=SUM(JZT35:JZT46)",
+   "valor": 960.0,
+   "soma_calculada": 480.0,
+   "cause": "SOMA_DESKTOP_DUPLICADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-03-29 Desktop Retiradas",
+   "cell": "Compromissos D0!JZY47",
+   "formula": "=SUM(JZY35:JZY46)",
+   "valor": 394.930076,
+   "soma_calculada": 197.465039,
+   "cause": "SOMA_DESKTOP_DUPLICADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-03-29 Desktop TOTAL",
+   "cell": "Compromissos D0!JZZ47",
+   "formula": "=JZZ43+JZZ39+JZZ35",
+   "valor": 2273.548213,
+   "soma_calculada": 2951.013251,
+   "cause": "SOMA_DESKTOP_DUPLICADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-04-21 Sudeste TOTAL",
+   "cell": "Compromissos D0!KTW58",
+   "formula": "1172.6",
+   "valor": 1172.6,
+   "soma_calculada": 1182.6,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-04-21 São José dos Campos TOTAL",
+   "cell": "Compromissos D0!KTW60",
+   "formula": "262.6",
+   "valor": 262.6,
+   "soma_calculada": 272.6,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-04-21 Desktop TOTAL",
+   "cell": "Compromissos D0!KTW62",
+   "formula": "2891.6000000000004",
+   "valor": 2891.6,
+   "soma_calculada": 2901.6,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-04-29 Sudeste MEs",
+   "cell": "Compromissos D0!LAH58",
+   "formula": "59.6",
+   "valor": 59.6,
+   "soma_calculada": 94.6,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-04-29 Jundiaí TOTAL",
+   "cell": "Compromissos D0!LAM61",
+   "formula": "983",
+   "valor": 983.0,
+   "soma_calculada": 1018.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-05-20 Sudeste Retiradas",
+   "cell": "Compromissos D0!LSC58",
+   "formula": "139",
+   "valor": 139.0,
+   "soma_calculada": 248.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-05-20 Jundiaí TOTAL",
+   "cell": "Compromissos D0!LSD61",
+   "formula": "628",
+   "valor": 628.0,
+   "soma_calculada": 737.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-06-15 Central MEs",
+   "cell": "Compromissos D0!MOA50",
+   "formula": "45",
+   "valor": 45.0,
+   "soma_calculada": 75.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-06-15 Sumaré TOTAL",
+   "cell": "Compromissos D0!MOF51",
+   "formula": "535",
+   "valor": 535.0,
+   "soma_calculada": 565.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "pctCommit",
+   "ref": "2026-06-25 Central Retiradas",
+   "cell": "Compromissos D0!MWG95",
+   "formula": "=IFERROR('Ret Jun'!AC21/MWG50,\"-\")",
+   "valor": 0.808696,
+   "soma_calculada": 0.826087,
+   "cause": "PCT_LE_ABA_MENSAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "pctCommit",
+   "ref": "2026-06-25 Sumaré Retiradas",
+   "cell": "Compromissos D0!MWG96",
+   "formula": "=IFERROR('Ret Jun'!AC22/MWG51,\"-\")",
+   "valor": 2.3,
+   "soma_calculada": 2.433333,
+   "cause": "PCT_LE_ABA_MENSAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-06-28 Desktop TOTAL",
+   "cell": "Compromissos D0!MYM47",
+   "formula": "=MYM43+MYM39+MYM35",
+   "valor": 2440.829161,
+   "soma_calculada": 1525.624825,
+   "cause": "DESKTOP_SEM_VALOR",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Central TOTAL",
+   "cell": "Compromissos D0!NSJ50",
+   "formula": "1615",
+   "valor": 1615.0,
+   "soma_calculada": 1680.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Sumaré TOTAL",
+   "cell": "Compromissos D0!NSJ51",
+   "formula": "580",
+   "valor": 580.0,
+   "soma_calculada": 605.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Sorocaba TOTAL",
+   "cell": "Compromissos D0!NSJ52",
+   "formula": "485",
+   "valor": 485.0,
+   "soma_calculada": 505.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Campinas TOTAL",
+   "cell": "Compromissos D0!NSJ53",
+   "formula": "550",
+   "valor": 550.0,
+   "soma_calculada": 570.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Centro Oeste TOTAL",
+   "cell": "Compromissos D0!NSJ54",
+   "formula": "1070",
+   "valor": 1070.0,
+   "soma_calculada": 1100.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Lençóis Paulista TOTAL",
+   "cell": "Compromissos D0!NSJ55",
+   "formula": "382",
+   "valor": 382.0,
+   "soma_calculada": 402.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Araraquara TOTAL",
+   "cell": "Compromissos D0!NSJ56",
+   "formula": "348",
+   "valor": 348.0,
+   "soma_calculada": 358.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Sudeste TOTAL",
+   "cell": "Compromissos D0!NSJ58",
+   "formula": "1587",
+   "valor": 1587.0,
+   "soma_calculada": 1632.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Praia Grande TOTAL",
+   "cell": "Compromissos D0!NSJ59",
+   "formula": "527",
+   "valor": 527.0,
+   "soma_calculada": 542.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 São José dos Campos TOTAL",
+   "cell": "Compromissos D0!NSJ60",
+   "formula": "311",
+   "valor": 311.0,
+   "soma_calculada": 322.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Jundiaí TOTAL",
+   "cell": "Compromissos D0!NSJ61",
+   "formula": "749",
+   "valor": 749.0,
+   "soma_calculada": 768.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-21 Desktop TOTAL",
+   "cell": "Compromissos D0!NSJ62",
+   "formula": "4272",
+   "valor": 4272.0,
+   "soma_calculada": 4412.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-07-24 Centro Oeste Instalação",
+   "cell": "Compromissos D0!NUI39",
+   "formula": "284.5864661654135",
+   "valor": 284.586466,
+   "soma_calculada": 284.586837,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-25 Sudeste TOTAL",
+   "cell": "Compromissos D0!NVH58",
+   "formula": "661.8",
+   "valor": 661.8,
+   "soma_calculada": 998.8,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-25 Jundiaí TOTAL",
+   "cell": "Compromissos D0!NVH61",
+   "formula": "58",
+   "valor": 58.0,
+   "soma_calculada": 395.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-07-25 Desktop TOTAL",
+   "cell": "Compromissos D0!NVH62",
+   "formula": "2535.8",
+   "valor": 2535.8,
+   "soma_calculada": 2872.8,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-08-01 Centro Oeste Instalação",
+   "cell": "Compromissos D0!OAY39",
+   "formula": "231.5869980879541",
+   "valor": 231.586998,
+   "soma_calculada": 231.5873,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-08-02 Centro Oeste Instalação",
+   "cell": "Compromissos D0!OBR39",
+   "formula": "57.896749521988525",
+   "valor": 57.89675,
+   "soma_calculada": 57.896825,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-08-15 Central Chip",
+   "cell": "Compromissos D0!OMW50",
+   "formula": "15",
+   "valor": 15.0,
+   "soma_calculada": 20.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-08-22 Central Chip",
+   "cell": "Compromissos D0!OST50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-08-29 Central Chip",
+   "cell": "Compromissos D0!OYQ50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-09-01 Central Instalação",
+   "cell": "Compromissos D0!PBL35",
+   "formula": "400.3616367112811",
+   "valor": 400.361637,
+   "soma_calculada": 400.350597,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-09-01 Centro Oeste Instalação",
+   "cell": "Compromissos D0!PBL39",
+   "formula": "224.60273804971317",
+   "valor": 224.602738,
+   "soma_calculada": 224.603996,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-09-01 Sudeste Instalação",
+   "cell": "Compromissos D0!PBL43",
+   "formula": "298.29017208413",
+   "valor": 298.290172,
+   "soma_calculada": 298.290733,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-09-05 Central Chip",
+   "cell": "Compromissos D0!PEN50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-09-12 Central Chip",
+   "cell": "Compromissos D0!PKK50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-09-18 Central Instalação",
+   "cell": "Compromissos D0!PPK50",
+   "formula": "430",
+   "valor": 430.0,
+   "soma_calculada": 420.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-09-18 Sorocaba TOTAL",
+   "cell": "Compromissos D0!PPQ52",
+   "formula": "490",
+   "valor": 490.0,
+   "soma_calculada": 480.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-09-19 Central Chip",
+   "cell": "Compromissos D0!PQH50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-09-26 Central Retiradas",
+   "cell": "Compromissos D0!PWF35",
+   "formula": "362.624",
+   "valor": 362.624,
+   "soma_calculada": 381.152,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-09-26 Central Chip",
+   "cell": "Compromissos D0!PWE50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-09-27 Central Retiradas",
+   "cell": "Compromissos D0!PWY35",
+   "formula": "90.656",
+   "valor": 90.656,
+   "soma_calculada": 95.288,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "need",
+   "ref": "2026-10-01 Central Retiradas",
+   "cell": "Compromissos D0!QAQ35",
+   "formula": "453.28",
+   "valor": 453.28,
+   "soma_calculada": 476.44,
+   "cause": "NEC_REGIONAL_COLADA",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-10-03 Central Chip",
+   "cell": "Compromissos D0!QCB50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-10-10 Central Chip",
+   "cell": "Compromissos D0!QHY50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-10-14 Centro Oeste Outros",
+   "cell": "Compromissos D0!QLP54",
+   "formula": "50.3",
+   "valor": 50.3,
+   "soma_calculada": 50.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-10-17 Central Chip",
+   "cell": "Compromissos D0!QNV50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-10-17 Sudeste Reparo",
+   "cell": "Compromissos D0!QNQ58",
+   "formula": "408",
+   "valor": 408.0,
+   "soma_calculada": 508.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-10-17 Sudeste MEs",
+   "cell": "Compromissos D0!QNS58",
+   "formula": "54",
+   "valor": 54.0,
+   "soma_calculada": 64.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-10-17 São José dos Campos TOTAL",
+   "cell": "Compromissos D0!QNX60",
+   "formula": "160",
+   "valor": 160.0,
+   "soma_calculada": 270.0,
+   "cause": "COMPROMISSO_COLADO_INCOERENTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-10-24 Central Chip",
+   "cell": "Compromissos D0!QTS50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "commit",
+   "ref": "2026-10-31 Central Chip",
+   "cell": "Compromissos D0!QZP50",
+   "formula": "10",
+   "valor": 10.0,
+   "soma_calculada": 15.0,
+   "cause": "PLAN_FDS_CHIP_CENTRAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ati Jun 2026-06-06 Central",
+   "cell": "Compromissos D0 bloco MFU × Ati Jun",
+   "formula": "valor colado",
+   "valor": null,
+   "soma_calculada": 405.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ati Jun 2026-06-06 Centro Oeste",
+   "cell": "Compromissos D0 bloco MFU × Ati Jun",
+   "formula": "valor colado",
+   "valor": null,
+   "soma_calculada": 217.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ati Jun 2026-06-06 Sudeste",
+   "cell": "Compromissos D0 bloco MFU × Ati Jun",
+   "formula": "valor colado",
+   "valor": null,
+   "soma_calculada": 320.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ati Jun 2026-06-06 Desktop",
+   "cell": "Compromissos D0 bloco MFU × Ati Jun",
+   "formula": "valor colado",
+   "valor": null,
+   "soma_calculada": 942.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ati Jun 2026-06-07 Central",
+   "cell": "Compromissos D0 bloco MGN × Ati Jun",
+   "formula": "valor colado",
+   "valor": 405.0,
+   "soma_calculada": 124.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ati Jun 2026-06-07 Centro Oeste",
+   "cell": "Compromissos D0 bloco MGN × Ati Jun",
+   "formula": "valor colado",
+   "valor": 217.0,
+   "soma_calculada": 59.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ati Jun 2026-06-07 Sudeste",
+   "cell": "Compromissos D0 bloco MGN × Ati Jun",
+   "formula": "valor colado",
+   "valor": 320.0,
+   "soma_calculada": 120.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ati Jun 2026-06-07 Desktop",
+   "cell": "Compromissos D0 bloco MGN × Ati Jun",
+   "formula": "valor colado",
+   "valor": 942.0,
+   "soma_calculada": 303.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-03 Sudeste",
+   "cell": "Compromissos D0 bloco MDP × Ret Jun",
+   "formula": "valor colado",
+   "valor": 208.0,
+   "soma_calculada": 207.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-05 Central",
+   "cell": "Compromissos D0 bloco MFB × Ret Jun",
+   "formula": "valor colado",
+   "valor": 167.0,
+   "soma_calculada": 168.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-06 Central",
+   "cell": "Compromissos D0 bloco MFU × Ret Jun",
+   "formula": "valor colado",
+   "valor": null,
+   "soma_calculada": 146.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-06 Centro Oeste",
+   "cell": "Compromissos D0 bloco MFU × Ret Jun",
+   "formula": "valor colado",
+   "valor": null,
+   "soma_calculada": 107.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-06 Sudeste",
+   "cell": "Compromissos D0 bloco MFU × Ret Jun",
+   "formula": "valor colado",
+   "valor": null,
+   "soma_calculada": 118.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-06 Desktop",
+   "cell": "Compromissos D0 bloco MFU × Ret Jun",
+   "formula": "valor colado",
+   "valor": null,
+   "soma_calculada": 371.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-07 Central",
+   "cell": "Compromissos D0 bloco MGN × Ret Jun",
+   "formula": "valor colado",
+   "valor": 146.0,
+   "soma_calculada": 15.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-07 Centro Oeste",
+   "cell": "Compromissos D0 bloco MGN × Ret Jun",
+   "formula": "valor colado",
+   "valor": 107.0,
+   "soma_calculada": 9.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-07 Sudeste",
+   "cell": "Compromissos D0 bloco MGN × Ret Jun",
+   "formula": "valor colado",
+   "valor": 118.0,
+   "soma_calculada": 0.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-07 Desktop",
+   "cell": "Compromissos D0 bloco MGN × Ret Jun",
+   "formula": "valor colado",
+   "valor": 371.0,
+   "soma_calculada": 24.0,
+   "cause": "REALIZADO_COLADO_NO_BLOCO_SEGUINTE",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-08 Centro Oeste",
+   "cell": "Compromissos D0 bloco MIA × Ret Jun",
+   "formula": "valor colado",
+   "valor": 251.0,
+   "soma_calculada": 253.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-08 Sudeste",
+   "cell": "Compromissos D0 bloco MIA × Ret Jun",
+   "formula": "valor colado",
+   "valor": 201.0,
+   "soma_calculada": 199.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-09 Central",
+   "cell": "Compromissos D0 bloco MIT × Ret Jun",
+   "formula": "valor colado",
+   "valor": 254.0,
+   "soma_calculada": 253.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-24 Central",
+   "cell": "Compromissos D0 bloco MVG × Ret Jun",
+   "formula": "valor colado",
+   "valor": 171.0,
+   "soma_calculada": 172.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-24 Sudeste",
+   "cell": "Compromissos D0 bloco MVG × Ret Jun",
+   "formula": "valor colado",
+   "valor": 190.0,
+   "soma_calculada": 189.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-25 Central",
+   "cell": "Compromissos D0 bloco MVZ × Ret Jun",
+   "formula": "valor colado",
+   "valor": 190.0,
+   "soma_calculada": 186.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-25 Desktop",
+   "cell": "Compromissos D0 bloco MVZ × Ret Jun",
+   "formula": "valor colado",
+   "valor": 485.0,
+   "soma_calculada": 481.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-26 Central",
+   "cell": "Compromissos D0 bloco MWS × Ret Jun",
+   "formula": "valor colado",
+   "valor": 217.0,
+   "soma_calculada": 216.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-26 Sudeste",
+   "cell": "Compromissos D0 bloco MWS × Ret Jun",
+   "formula": "valor colado",
+   "valor": 160.0,
+   "soma_calculada": 161.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-29 Central",
+   "cell": "Compromissos D0 bloco MZR × Ret Jun",
+   "formula": "valor colado",
+   "valor": 180.0,
+   "soma_calculada": 697.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-29 Centro Oeste",
+   "cell": "Compromissos D0 bloco MZR × Ret Jun",
+   "formula": "valor colado",
+   "valor": 167.0,
+   "soma_calculada": 362.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-29 Sudeste",
+   "cell": "Compromissos D0 bloco MZR × Ret Jun",
+   "formula": "valor colado",
+   "valor": 144.0,
+   "soma_calculada": 375.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jun 2026-06-29 Desktop",
+   "cell": "Compromissos D0 bloco MZR × Ret Jun",
+   "formula": "valor colado",
+   "valor": 491.0,
+   "soma_calculada": 1434.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jul 2026-07-01 Central",
+   "cell": "Compromissos D0 bloco NBD × Ret Jul",
+   "formula": "valor colado",
+   "valor": 308.0,
+   "soma_calculada": 277.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jul 2026-07-01 Centro Oeste",
+   "cell": "Compromissos D0 bloco NBD × Ret Jul",
+   "formula": "valor colado",
+   "valor": 272.0,
+   "soma_calculada": 214.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jul 2026-07-01 Sudeste",
+   "cell": "Compromissos D0 bloco NBD × Ret Jul",
+   "formula": "valor colado",
+   "valor": 189.0,
+   "soma_calculada": 230.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Jul 2026-07-01 Desktop",
+   "cell": "Compromissos D0 bloco NBD × Ret Jul",
+   "formula": "valor colado",
+   "valor": 769.0,
+   "soma_calculada": 721.0,
+   "cause": "ABA_MENSAL_DIFERE_DA_FOTO",
+   "evidence": "hipótese"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Out 2026-10-23 Central",
+   "cell": "Compromissos D0 bloco QST × Ret Out",
+   "formula": "valor colado",
+   "valor": 257.0,
+   "soma_calculada": 275.0,
+   "cause": "FOTO_D1_X_BASE_ATUAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Out 2026-10-23 Centro Oeste",
+   "cell": "Compromissos D0 bloco QST × Ret Out",
+   "formula": "valor colado",
+   "valor": 165.0,
+   "soma_calculada": 169.0,
+   "cause": "FOTO_D1_X_BASE_ATUAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Out 2026-10-23 Sudeste",
+   "cell": "Compromissos D0 bloco QST × Ret Out",
+   "formula": "valor colado",
+   "valor": 195.0,
+   "soma_calculada": 202.0,
+   "cause": "FOTO_D1_X_BASE_ATUAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Out 2026-10-23 Desktop",
+   "cell": "Compromissos D0 bloco QST × Ret Out",
+   "formula": "valor colado",
+   "valor": 617.0,
+   "soma_calculada": 646.0,
+   "cause": "FOTO_D1_X_BASE_ATUAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Out 2026-10-24 Central",
+   "cell": "Compromissos D0 bloco QTM × Ret Out",
+   "formula": "valor colado",
+   "valor": 90.0,
+   "soma_calculada": 92.0,
+   "cause": "FOTO_D1_X_BASE_ATUAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Out 2026-10-24 Centro Oeste",
+   "cell": "Compromissos D0 bloco QTM × Ret Out",
+   "formula": "valor colado",
+   "valor": 100.0,
+   "soma_calculada": 101.0,
+   "cause": "FOTO_D1_X_BASE_ATUAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Out 2026-10-24 Sudeste",
+   "cell": "Compromissos D0 bloco QTM × Ret Out",
+   "formula": "valor colado",
+   "valor": 90.0,
+   "soma_calculada": 92.0,
+   "cause": "FOTO_D1_X_BASE_ATUAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Out 2026-10-24 Desktop",
+   "cell": "Compromissos D0 bloco QTM × Ret Out",
+   "formula": "valor colado",
+   "valor": 280.0,
+   "soma_calculada": 285.0,
+   "cause": "FOTO_D1_X_BASE_ATUAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Out 2026-10-25 Centro Oeste",
+   "cell": "Compromissos D0 bloco QUF × Ret Out",
+   "formula": "valor colado",
+   "valor": 57.0,
+   "soma_calculada": 58.0,
+   "cause": "FOTO_D1_X_BASE_ATUAL",
+   "evidence": "comprovada"
+  },
+  {
+   "check": "monthlyVsBlock",
+   "ref": "Ret Out 2026-10-25 Desktop",
+   "cell": "Compromissos D0 bloco QUF × Ret Out",
+   "formula": "valor colado",
+   "valor": 58.0,
+   "soma_calculada": 59.0,
+   "cause": "FOTO_D1_X_BASE_ATUAL",
+   "evidence": "comprovada"
+  }
+ ]
+}
