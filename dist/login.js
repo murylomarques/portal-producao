@@ -5,9 +5,12 @@
   const form = $('#form'), usuario = $('#usuario'), senha = $('#senha'), btn = $('#entrar'), erro = $('#erro'), status = $('#status');
   let ocupado = false;
   const cena = () => window.FUP_CENA;  // definida pelo login3d.js quando a cena carrega (pode nunca existir)
+  // Servidor local: /api com cookie. Cópia do IQT (/fup-portal/login.html): API do Laravel; o token fica no navegador.
+  const IQT = location.pathname.includes('/fup-portal/');
+  const API = IQT ? (() => { try { const u = window.parent !== window && window.parent.FUP_DATA_URL; if (u) return u.replace(/\/dados$/, ''); } catch (e) { } return '/api/api/fup'; })() : '/api';
 
   // ---------------------------------------------------------------- estado do servidor (já existe usuário?)
-  fetch('/api/estado', { cache: 'no-store' }).then(r => r.json()).then(j => { if (!j.configurado) $('#aviso-config').hidden = false; }).catch(() => { });
+  fetch(API + '/estado', { cache: 'no-store' }).then(r => r.json()).then(j => { if (!j.configurado) $('#aviso-config').hidden = false; }).catch(() => { });
 
   // ---------------------------------------------------------------- mostrar/ocultar senha e Caps Lock
   $('#olho').addEventListener('click', () => {
@@ -49,17 +52,20 @@
     const ctl = new AbortController(), limite = setTimeout(() => ctl.abort(), 20000);
     let r = null;
     try {
-      r = await fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ usuario: u, senha: s }), cache: 'no-store', credentials: 'same-origin', signal: ctl.signal });
+      r = await fetch(API + '/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ usuario: u, senha: s }), cache: 'no-store', credentials: 'same-origin', signal: ctl.signal });
     } catch (e) { r = null; }
     clearTimeout(limite);
 
+    let token = null;
+    if (r && r.ok && IQT) { try { token = (await r.json()).token; } catch (e) { token = null; } if (!token) r = null; }
     if (r && r.ok) {  // só aqui o acesso é dado como liberado (confirmação real do servidor)
+      if (token) { try { localStorage.setItem('fup-token', token); } catch (e) { } }
       btn.classList.remove('ocupado'); btn.classList.add('feito'); status.textContent = 'Acesso liberado. Abrindo o portal…';
       senha.value = '';
       const espera = cena()?.sucesso?.() || Promise.resolve();
       document.body.classList.add('saindo');
       await Promise.race([espera, new Promise(ok => setTimeout(ok, 1400))]);
-      location.replace('/');
+      location.replace(IQT ? 'index.html' : '/');
       return;
     }
     let msg = 'Não foi possível conectar ao servidor do portal. Confira se ele está aberto e tente de novo.';
@@ -75,7 +81,7 @@
   const semCena = () => document.body.classList.add('sem-cena');
   const carrega = () => {
     if (!temWebGL()) return semCena();
-    import('/login3d.js').then(m => m.iniciar(document.getElementById('cena'))).catch(err => { console.warn('Cena 3D indisponível:', err && err.message); semCena(); });
+    import(new URL('login3d.js', document.baseURI).href).then(m => m.iniciar(document.getElementById('cena'))).catch(err => { console.warn('Cena 3D indisponível:', err && err.message); semCena(); });
   };
   document.body.classList.remove('carregando');
   if (matchMedia('(pointer: fine)').matches) usuario.focus({ preventScroll: true });  // no celular não abre o teclado sozinho

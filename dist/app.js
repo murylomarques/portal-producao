@@ -975,9 +975,17 @@ function vBacklog() {
 /* ------------------------------------------------------------------ VIEW: usuários (só administrador; servidor local do FUP) */
 // Lista, cria e altera usuários e as telas que cada um vê. Quem confere tudo é o servidor (/api/usuarios); aqui é só a tela.
 const US = { lista: null, telas: [], senhaMin: 8, edit: null, msg: '', erro: '' };
+// Servidor local: API em /api com cookie. Cópia do IQT (/fup-portal/): API do Laravel (/api/api/fup) com token no cabeçalho.
+const FUP_IQT = typeof location !== 'undefined' && location.pathname.includes('/fup-portal/');
+const FUP_API = FUP_IQT ? (window.FUP_API_BASE || '/api/api/fup') : '/api';
+const FUP_LOGIN = FUP_IQT ? 'login.html' : '/login';
+const fupToken = v => { try { if (v === null) localStorage.removeItem('fup-token'); return localStorage.getItem('fup-token'); } catch (e) { return null; } };
+const fupSair = () => { if (FUP_IQT) fupToken(null); location.replace(FUP_LOGIN); };
 const usApi = async (url, body) => {
-  const r = await fetch(url, body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), credentials: 'same-origin' } : { credentials: 'same-origin', cache: 'no-store' });
-  if (r.status === 401) { location.replace('/login'); throw Error('Sessão expirada'); }
+  const h = body ? { 'Content-Type': 'application/json' } : {}, t = FUP_IQT && fupToken();
+  if (t) h.Authorization = 'Bearer ' + t;
+  const r = await fetch(url.replace(/^\/api/, FUP_API), body ? { method: 'POST', headers: h, body: JSON.stringify(body), credentials: 'same-origin' } : { headers: h, credentials: 'same-origin', cache: 'no-store' });
+  if (r.status === 401) { fupSair(); throw Error('Sessão expirada'); }
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw Error(j.erro || 'Não foi possível concluir.');
   return j;
@@ -1323,7 +1331,7 @@ function initUsuario() {
   $$('nav .nav-label').forEach(l => { let x = l.nextElementSibling, algum = false; while (x && !x.classList.contains('nav-label')) { if (x.matches('button') && !x.hidden) algum = true; x = x.nextElementSibling; } l.hidden = !algum; });
   const box = $('#user-box'); box.hidden = false;
   $('#user-nome').textContent = USER.nome; $('#user-login').textContent = USER.admin ? `${USER.usuario} · administrador` : USER.usuario;
-  $('#user-sair').addEventListener('click', async () => { try { await fetch('/api/logout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}', credentials: 'same-origin' }); } catch (e) { } location.replace('/login'); });
+  $('#user-sair').addEventListener('click', async () => { try { await usApi('/api/logout', {}); } catch (e) { } fupSair(); });
   const dlg = $('#dlg-senha'), fs = $('#form-senha'), err = $('#senha-erro');
   $('#user-senha').addEventListener('click', () => { fs.reset(); err.hidden = true; dlg.showModal(); fs.atual.focus(); });
   $('#senha-cancela').addEventListener('click', () => dlg.close());

@@ -4,7 +4,7 @@
    até a fachada, ONU dentro da casa (LOS vermelho piscando sem fibra → PON verde depois do sinal), roteador com Wi-Fi.
    Fluxo FTTH: OLT → cabo de distribuição → CTO (splitter) → drop → ONU → roteador → dispositivos.
    A cena é só apresentação: o login funciona sem ela e nunca é dado como aceito sem a resposta do servidor. */
-import * as THREE from '/vendor/three/three.module.min.js';
+import * as THREE from './vendor/three/three.module.min.js';  // relativo: serve no portal local (/) e no IQT (/fup-portal/)
 
 const OURO = 0xf4ba44, TEAL = 0x6fe3d6, VERDE = 0x37e07a, VERM = 0xff3b30;
 
