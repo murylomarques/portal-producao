@@ -1,2 +1,8 @@
 __pycache__/
 outputs/
+usuarios.json
+usuarios.tmp
+compromisso_log.jsonl
+compromisso_prorrogacoes.json
+_libs/
+*.tmp
